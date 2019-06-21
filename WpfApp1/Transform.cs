@@ -10,13 +10,13 @@ namespace WpfApp1
     {
         public static double toPressure(double current)
         {
-            if (current < 3.98 || current > 20)
+            if ( current > 20)
             {
                 throw new Exception("Input current out of range");
             }
-            if (current >= 3.98 && current < 5.6)
+            if (current<4)
             {
-                return 10 * (current - 3.98) / 1.62;
+                return 0;
             }
             else
             {

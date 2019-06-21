@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace WpfApp1
 {
     /// <summary>
@@ -23,6 +24,13 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            this.chanel1.SelectedIndex = 0;
+            this.chanel2.SelectedIndex = 1;
+            this.chanel3.SelectedIndex = 2;
+            this.unit1.SelectedIndex = 0;
+            this.unit2.SelectedIndex = 0;
+            this.unit3.SelectedIndex = 0;
         }
+        
     }
 }

@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="数据采集系统" Height="450" Width="800">
+    <Window.DataContext>
+        <local:PlotModel></local:PlotModel>
+    </Window.DataContext>
     <Grid>
         <DockPanel>
             <!--停靠布局，让菜单栏和工具栏位于窗口顶部-->
@@ -55,7 +59,7 @@
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Orientation="Vertical">
                         <StackPanel Height="30" Orientation="Horizontal">
                             <TextBlock Text="通道：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
-                            <ComboBox Width="40" VerticalAlignment="Center" Margin="5,2">
+                            <ComboBox x:Name="chanel1" Width="40" VerticalAlignment="Center" Margin="5,2" >
                                 <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="99"/>
                                 <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99"/>
                                 <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99"/>
@@ -64,7 +68,7 @@
                         <StackPanel Height="30" Orientation="Horizontal">
                             <TextBlock Text="数值：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
                             <TextBox Text="23.8" Width="40" VerticalAlignment="Center"  Margin="5,2"></TextBox>
-                            <ComboBox Width="80" VerticalAlignment="Center" Margin="5,2" >
+                            <ComboBox x:Name="unit1" Width="80" VerticalAlignment="Center" Margin="5,2" >
                                 <ComboBoxItem Content="MPa" HorizontalAlignment="Left" Width="99"/>
                             </ComboBox>
                         </StackPanel>
@@ -72,7 +76,7 @@
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"  Orientation="Vertical">
                         <StackPanel Height="30" Orientation="Horizontal">
                             <TextBlock Text="通道：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
-                            <ComboBox Width="40" VerticalAlignment="Center" Margin="5,2">
+                            <ComboBox x:Name="chanel2" Width="40" VerticalAlignment="Center" Margin="5,2">
                                 <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="99"/>
                                 <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99"/>
                                 <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99"/>
@@ -81,7 +85,7 @@
                         <StackPanel Height="30" Orientation="Horizontal">
                             <TextBlock Text="数值：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
                             <TextBox Text="23.8" Width="40" VerticalAlignment="Center" Margin="5,2"> </TextBox>
-                            <ComboBox Width="80" VerticalAlignment="Center" Margin="5,2">
+                            <ComboBox x:Name="unit2" Width="80" VerticalAlignment="Center" Margin="5,2">
                                 <ComboBoxItem Content="MPa" HorizontalAlignment="Left" Width="99"/>
                             </ComboBox>
                         </StackPanel>
@@ -89,7 +93,7 @@
                     <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Column="2" Orientation="Vertical">
                         <StackPanel Height="30" Orientation="Horizontal">
                             <TextBlock Text="通道：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
-                            <ComboBox Width="40" VerticalAlignment="Center" Margin="5,2">
+                            <ComboBox x:Name="chanel3" Width="40" VerticalAlignment="Center" Margin="5,2">
                                 <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="99"/>
                                 <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99"/>
                                 <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99"/>
@@ -98,7 +102,7 @@
                         <StackPanel Height="30" Orientation="Horizontal">
                             <TextBlock Text="数值：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
                             <TextBox Text="21.5" Width="40" VerticalAlignment="Center"  Margin="5,2"></TextBox>
-                            <ComboBox Width="80" VerticalAlignment="Center" Margin="5,2">
+                            <ComboBox x:Name="unit3" Width="80" VerticalAlignment="Center" Margin="5,2">
                                 <ComboBoxItem Content="℃" HorizontalAlignment="Left" Width="99"/>
                             </ComboBox>
                         </StackPanel>
@@ -122,7 +126,11 @@
                 
                 
             </GroupBox>
-            <TextBox DockPanel.Dock="Left" Text="绘图控件"></TextBox>
+            <oxy:Plot Title="{Binding Title}">
+                <oxy:Plot.Series>
+                    <oxy:LineSeries ItemsSource="{Binding Points}"></oxy:LineSeries>
+                </oxy:Plot.Series>
+            </oxy:Plot>
         </DockPanel>
 
     </Grid>
