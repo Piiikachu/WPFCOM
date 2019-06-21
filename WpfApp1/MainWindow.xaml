@@ -7,6 +7,123 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DockPanel>
+            <!--停靠布局，让菜单栏和工具栏位于窗口顶部-->
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="文件(F)">
+                    <!--菜单项为MenuItem，文字使用属性 Header-->
+                    <MenuItem Header="新建">
+
+                    </MenuItem>
+                    <MenuItem Header="打开"></MenuItem>
+                    <MenuItem Header="另存为"></MenuItem>
+                    <Separator />
+                    <MenuItem Header="导出"></MenuItem>
+                    <Separator />
+                    <MenuItem Header="退出"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="设置">
+                    <MenuItem Header="通信"></MenuItem>
+                    <MenuItem Header="采样周期"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="校准">
+                    <MenuItem Header="通道1"></MenuItem>
+                    <MenuItem Header="通道2"></MenuItem>
+                    <MenuItem Header="通道3"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="控制">
+                    <MenuItem Header="运行"></MenuItem>
+                    <MenuItem Header="暂停"></MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <StatusBar DockPanel.Dock="Bottom" Height="20">
+                <TextBlock DockPanel.Dock="left"  Width="200" Text="编号："></TextBlock>
+                <TextBlock DockPanel.Dock="left"  Width="400"  Text="时间："></TextBlock>
+                <TextBlock DockPanel.Dock="left"   Text="状态："></TextBlock>
+            </StatusBar>
+            <GroupBox DockPanel.Dock="top" Height="100">
+                <GroupBox.Header>
+                    <TextBox Text="配置"></TextBox>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Orientation="Vertical">
+                        <StackPanel Height="30" Orientation="Horizontal">
+                            <TextBlock Text="通道：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
+                            <ComboBox Width="40" VerticalAlignment="Center" Margin="5,2">
+                                <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="99"/>
+                                <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99"/>
+                                <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal">
+                            <TextBlock Text="数值：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
+                            <TextBox Text="23.8" Width="40" VerticalAlignment="Center"  Margin="5,2"></TextBox>
+                            <ComboBox Width="80" VerticalAlignment="Center" Margin="5,2" >
+                                <ComboBoxItem Content="MPa" HorizontalAlignment="Left" Width="99"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"  Orientation="Vertical">
+                        <StackPanel Height="30" Orientation="Horizontal">
+                            <TextBlock Text="通道：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
+                            <ComboBox Width="40" VerticalAlignment="Center" Margin="5,2">
+                                <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="99"/>
+                                <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99"/>
+                                <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal">
+                            <TextBlock Text="数值：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
+                            <TextBox Text="23.8" Width="40" VerticalAlignment="Center" Margin="5,2"> </TextBox>
+                            <ComboBox Width="80" VerticalAlignment="Center" Margin="5,2">
+                                <ComboBoxItem Content="MPa" HorizontalAlignment="Left" Width="99"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Column="2" Orientation="Vertical">
+                        <StackPanel Height="30" Orientation="Horizontal">
+                            <TextBlock Text="通道：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
+                            <ComboBox Width="40" VerticalAlignment="Center" Margin="5,2">
+                                <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="99"/>
+                                <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99"/>
+                                <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Height="30" Orientation="Horizontal">
+                            <TextBlock Text="数值：" VerticalAlignment="Center" Margin="5,2"></TextBlock>
+                            <TextBox Text="21.5" Width="40" VerticalAlignment="Center"  Margin="5,2"></TextBox>
+                            <ComboBox Width="80" VerticalAlignment="Center" Margin="5,2">
+                                <ComboBoxItem Content="℃" HorizontalAlignment="Left" Width="99"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+                
+                
+            </GroupBox>
+            <GroupBox DockPanel.Dock="Left" Width="200" >
+                <GroupBox.Header>
+                    <TextBlock Text="Test"></TextBlock>
+                </GroupBox.Header>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="电流："></TextBlock>
+                    <TextBox Text="018E"></TextBox>
+                    <Button x:Name="btn_transform" Content="转换" ></Button>
+                    <TextBlock Text="气压："></TextBlock>
+                    <TextBlock Text="0MPa"></TextBlock>
+                </StackPanel>
+                
+                
+            </GroupBox>
+            <TextBox DockPanel.Dock="Left" Text="绘图控件"></TextBox>
+        </DockPanel>
+
     </Grid>
 </Window>
