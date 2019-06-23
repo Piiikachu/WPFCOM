@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Transform
+    public class Transform
     {
         public static double toPressure(double current)
         {
@@ -20,13 +20,40 @@ namespace WpfApp1
             }
             else
             {
-                return 10 + 10 / 1.6 * (current - 5.6);
+                return 100*(current-4)/16;
             }
         }
-
-        public static double toDec(string hexNumber)
+        public static double[] toPressures(string[] hexnums)
         {
-            return Convert.ToInt32(hexNumber, 16) / 100;
+            if (hexnums.Length!=8)
+            {
+                throw new Exception("number of channels is not 8");
+            }
+            double[] ps = new double[8];
+            for (int i = 0; i < 8; i++)
+            {
+                ps[i] = toPressure(Convert.ToDouble(toDec(hexnums[i]))/100);
+            }
+            return ps;
+        }
+
+        public static int toDec(string hexNumber)
+        {
+            return Convert.ToInt32(hexNumber, 16);
+        }
+
+        public static string[] toChannels(string s)
+        {
+            string[] channels = new string[8];
+            if (s.Length!=50)
+            {
+                throw new Exception("COM message lenth error");
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                channels[i] = s.Substring(4*i + 6, 4);
+            }
+            return channels;
         }
     }
 }
