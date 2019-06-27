@@ -4,9 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
-        xmlns:d3="clr-namespace:InteractiveDataDisplay.WPF;assembly=InteractiveDataDisplay.WPF"
         mc:Ignorable="d"
-        Title="数据采集系统" Height="588.692" Width="800">
+        Title="数据采集系统" Height="600" Width="800">
 
     <Grid>
         <DockPanel>
@@ -28,8 +27,8 @@
                     <MenuItem Header="通信"></MenuItem>
                     <MenuItem Header="采样周期"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="校准">
-                    <MenuItem Header="通道1"></MenuItem>
+                <MenuItem Header="标定">
+                    <MenuItem Header="通道1" Click="MenuClb1_Click"></MenuItem>
                     <MenuItem Header="通道2"></MenuItem>
                     <MenuItem Header="通道3"></MenuItem>
                 </MenuItem>

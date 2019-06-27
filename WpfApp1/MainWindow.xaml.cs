@@ -39,7 +39,7 @@ namespace WpfApp1
         static int BUFFER_SIZE = 25;
         byte[] buffer = new Byte[BUFFER_SIZE];
 
-        SerialPort myPort = new SerialPort();
+        public static SerialPort myPort = new SerialPort();
         double result;
         bool portClosing;
         string pressure;
@@ -115,6 +115,14 @@ namespace WpfApp1
         private void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
+        }
+
+        private void MenuClb1_Click(object sender, RoutedEventArgs e)
+        {
+            string msg = "通道1";
+            CalibrateWindow c = new CalibrateWindow();
+            c.Title = msg + "标定窗口";
+            c.ShowDialog();
         }
     }
 }
