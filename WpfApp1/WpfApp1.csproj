@@ -56,10 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CalibrateModel.cs" />
     <Compile Include="CalibrateWindow.xaml.cs">
       <DependentUpon>CalibrateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChannelInfo.cs" />
+    <Compile Include="StatusModel.cs" />
     <Compile Include="Transform.cs" />
     <Page Include="CalibrateWindow.xaml">
       <SubType>Designer</SubType>

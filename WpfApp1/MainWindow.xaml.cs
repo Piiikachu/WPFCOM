@@ -120,8 +120,7 @@ namespace WpfApp1
         private void MenuClb1_Click(object sender, RoutedEventArgs e)
         {
             string msg = "通道1";
-            CalibrateWindow c = new CalibrateWindow();
-            c.Title = msg + "标定窗口";
+            CalibrateWindow c = new CalibrateWindow(msg);
             c.ShowDialog();
         }
     }

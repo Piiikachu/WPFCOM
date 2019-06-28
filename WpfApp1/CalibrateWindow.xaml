@@ -5,22 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="CalibrateWindow" Height="220" Width="300">
+        
+        Title="CalibrateWindow" Height="220" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Window.DataContext>
+        <local:CalibrateModel/>
+    </Window.DataContext>
     <Grid>
         <DockPanel>
-            <Button Content="确定" DockPanel.Dock="Bottom"></Button>
+            <StackPanel DockPanel.Dock="Bottom" Height="20" Margin="0,0,0,2" Orientation="Horizontal">
+                <Button x:Name="btn_bd" Content="标定" Width="90" Margin="5,0,5,0" Click="Btn_bd_Click"></Button>
+                <Button Content="重置" Width="85" Margin="5,0,5,0"></Button>
+                <Button Content="完成" Width="90" Margin="5,0,5,0"></Button>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <TextBlock  Height="20" Text="标定压力" Width="100" Margin="5,0,0,0"></TextBlock>
+                <GridSplitter Width="1"></GridSplitter>
+                <TextBlock Text="电流值(标定值/参考值)：" Height="20" Margin="5,0,0,0"></TextBlock>
+            </StackPanel>
+            <GridSplitter DockPanel.Dock="Top" Width="1"></GridSplitter>
             <StackPanel DockPanel.Dock="Left" Width="100" Orientation="Vertical" Margin="5,0,0,0">
-                <TextBlock  Height="20" Text="标定压力"></TextBlock>
-                <RadioButton VerticalContentAlignment="Center" Height="20" Content="0Mpa"/>
+                <RadioButton IsChecked="True" VerticalContentAlignment="Center" Height="20" Content="0Mpa"/>
                 <RadioButton VerticalContentAlignment="Center" Height="20" Content="20Mpa"/>
                 <RadioButton VerticalContentAlignment="Center" Height="20" Content="40Mpa"/>
                 <RadioButton VerticalContentAlignment="Center" Height="20" Content="60Mpa"/>
                 <RadioButton VerticalContentAlignment="Center" Height="20" Content="80Mpa"/>
                 <RadioButton VerticalContentAlignment="Center" Height="20" Content="100Mpa"/>
-                
+                <TextBox Text="{Binding BdPoint}"/>
             </StackPanel>
+            <GridSplitter  Width="1"></GridSplitter>
             <StackPanel DockPanel.Dock="Left" Orientation="Vertical" >
-                <TextBlock Text="电流值(实际/参考)：" Height="20"></TextBlock>
                 <!--<TextBlock Height="100"></TextBlock>-->
                 <Grid>
                     <Grid.ColumnDefinitions>

@@ -39,8 +39,11 @@
             </Menu>
 
             <StatusBar DockPanel.Dock="Bottom" Height="20">
+                <StatusBar.DataContext>
+                    <local:StatusModel/>
+                </StatusBar.DataContext>
                 <TextBlock DockPanel.Dock="left"  Width="200" Text="编号："></TextBlock>
-                <TextBlock DockPanel.Dock="left"  Width="400"  Text="时间："></TextBlock>
+                <TextBlock DockPanel.Dock="left"  Width="400"  Text="{Binding CurrentTime}"></TextBlock>
                 <TextBlock DockPanel.Dock="left"   Text="状态："></TextBlock>
             </StatusBar>
             <GroupBox DockPanel.Dock="top" Height="100">
