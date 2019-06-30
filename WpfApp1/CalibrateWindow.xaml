@@ -23,13 +23,16 @@
                 <TextBlock Text="电流值(标定值/参考值)：" Height="20" Margin="5,0,0,0"></TextBlock>
             </StackPanel>
             <GridSplitter DockPanel.Dock="Top" Width="1"></GridSplitter>
-            <StackPanel DockPanel.Dock="Left" Width="100" Orientation="Vertical" Margin="5,0,0,0">
-                <RadioButton IsChecked="True" VerticalContentAlignment="Center" Height="20" Content="0Mpa"/>
-                <RadioButton VerticalContentAlignment="Center" Height="20" Content="20Mpa"/>
-                <RadioButton VerticalContentAlignment="Center" Height="20" Content="40Mpa"/>
-                <RadioButton VerticalContentAlignment="Center" Height="20" Content="60Mpa"/>
-                <RadioButton VerticalContentAlignment="Center" Height="20" Content="80Mpa"/>
-                <RadioButton VerticalContentAlignment="Center" Height="20" Content="100Mpa"/>
+            <StackPanel  DockPanel.Dock="Left" Width="100" Orientation="Vertical" Margin="5,0,0,0">
+                <StackPanel.Resources>
+                    <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+                </StackPanel.Resources>
+                <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P0Mpa}}" VerticalContentAlignment="Center" Height="20" Content="0Mpa"/>
+                <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P20Mpa}}" VerticalContentAlignment="Center" Height="20" Content="20Mpa"/>
+                <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P40Mpa}}" VerticalContentAlignment="Center" Height="20" Content="40Mpa"/>
+                <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P60Mpa}}" VerticalContentAlignment="Center" Height="20" Content="60Mpa"/>
+                <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P80Mpa}}" VerticalContentAlignment="Center" Height="20" Content="80Mpa"/>
+                <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P100Mpa}}" VerticalContentAlignment="Center" Height="20" Content="100Mpa"/>
                 <TextBox Text="{Binding BdPoint}"/>
             </StackPanel>
             <GridSplitter  Width="1"></GridSplitter>

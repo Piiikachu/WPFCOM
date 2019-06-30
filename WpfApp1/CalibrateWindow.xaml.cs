@@ -20,17 +20,24 @@ namespace WpfApp1
     /// </summary>
     public partial class CalibrateWindow : Window
     {
+        CalibrateModel model;
         public CalibrateWindow(string channel)
         {
             InitializeComponent();
             this.Title = $"{channel}标定窗口";
-            CalibrateModel model = new CalibrateModel();
+            model = new CalibrateModel();
             DataContext = model;
+        }
+
+        private string bdPointToString(BDPoint p)
+        {
+            return p.ToString().Substring(1);
         }
 
         private void Btn_bd_Click(object sender, RoutedEventArgs e)
         {
-            string msg = "test";
+            string p = bdPointToString(model.BdPoint);
+            string msg = $"确认标定{p}压力时的电流值为mA?";
             string caption = "确认标定";
             MessageBoxButton button = MessageBoxButton.YesNo;
             MessageBoxImage icon = MessageBoxImage.Question;
