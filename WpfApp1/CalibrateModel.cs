@@ -17,22 +17,24 @@ namespace WpfApp1
            4, 7.2, 10.4, 13.6, 16.8, 20
         };
 
-        public static double[] CURRENT_CALIBRATE = new double[6]
+        private double[] currentCalibratePoints = new double[6]
         {
             4, 7.2, 10.4, 13.6, 16.8, 20
         };
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public static void ResetCalibrate()
+        public void ResetCalibrate()
         {
-            Array.Copy(DEFAULT_CALIBRATE, CURRENT_CALIBRATE, 6);
+            Array.Copy(DEFAULT_CALIBRATE, CurrentCalibratePoints, 6);
         }
 
         public CalibrateModel()
         {
-
+            //todo: 实现实时读取电流值
+            this.InputCurrent = 0.86;
         }
+
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -46,8 +48,27 @@ namespace WpfApp1
 
         public BDPoint BdPoint
         {
-            get => bdPoint; set { bdPoint = value; OnPropertyChanged("BdPoint"); }
+            get => bdPoint;
+            set
+            {
+                bdPoint = value;
+                OnPropertyChanged("BdPoint");
+            }
         }
+
+        public double InputCurrent
+        {
+            get => inputCurrent;
+            set
+            {
+                inputCurrent = value;
+                OnPropertyChanged("InputCurrent");
+            }
+        }
+
+        public double[] CurrentCalibratePoints { get => currentCalibratePoints; set => currentCalibratePoints = value; }
+
+        private double inputCurrent;
     }
     public enum BDPoint
     {

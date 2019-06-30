@@ -37,7 +37,8 @@ namespace WpfApp1
         private void Btn_bd_Click(object sender, RoutedEventArgs e)
         {
             string p = bdPointToString(model.BdPoint);
-            string msg = $"确认标定{p}压力时的电流值为mA?";
+            double current = model.InputCurrent;
+            string msg = $"确认标定{p}压力时的电流值为{current}mA?";
             string caption = "确认标定";
             MessageBoxButton button = MessageBoxButton.YesNo;
             MessageBoxImage icon = MessageBoxImage.Question;
@@ -48,11 +49,46 @@ namespace WpfApp1
                     break;
                 case MessageBoxResult.OK:
                     break;
-                case MessageBoxResult.Cancel:
-                    break;
                 case MessageBoxResult.Yes:
+                    SetValue(model.BdPoint, current);
                     break;
                 case MessageBoxResult.No:
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void SetValue(BDPoint p,double current)
+        {
+            switch (p)
+            {
+                case BDPoint.P0Mpa:
+                    this.bdText0.Text = $"{current}mA";
+                    model.CurrentCalibratePoints[0] = current;
+                    break;
+                case BDPoint.P20Mpa:
+                    this.bdText2.Text = $"{current}mA";
+                    model.CurrentCalibratePoints[1] = current;
+                    break;
+                case BDPoint.P40Mpa:
+                    this.bdText4.Text = $"{current}mA";
+                    model.CurrentCalibratePoints[2] = current;
+                    break;
+                case BDPoint.P60Mpa:
+                    this.bdText6.Text = $"{current}mA";
+                    model.CurrentCalibratePoints[3] = current;
+                    break;
+                case BDPoint.P80Mpa:
+                    this.bdText8.Text = $"{current}mA";
+                    model.CurrentCalibratePoints[4] = current;
+                    break;
+                case BDPoint.P100Mpa:
+                    this.bdText10.Text = $"{current}mA";
+                    model.CurrentCalibratePoints[5] = current;
                     break;
                 default:
                     break;

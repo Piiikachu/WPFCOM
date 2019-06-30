@@ -27,10 +27,10 @@
                     <MenuItem Header="通信"></MenuItem>
                     <MenuItem Header="采样周期"></MenuItem>
                 </MenuItem>
-                <MenuItem Header="标定">
+                <MenuItem Header="标定" Click="MenuClb_Click">
                     <MenuItem Header="通道1" Click="MenuClb1_Click"></MenuItem>
-                    <MenuItem Header="通道2"></MenuItem>
-                    <MenuItem Header="通道3"></MenuItem>
+                    <MenuItem Header="通道2" Click="MenuClb2_Click"></MenuItem>
+                    <MenuItem Header="通道3" Click="MenuClb3_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="控制">
                     <MenuItem Header="运行"></MenuItem>

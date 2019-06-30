@@ -47,7 +47,6 @@ namespace WpfApp1
 
         ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
 
-
         private void MyPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (portClosing)
@@ -57,22 +56,23 @@ namespace WpfApp1
 
             try
             {
-                myPort.Read(buffer,0,BUFFER_SIZE);
+                myPort.Read(buffer, 0, BUFFER_SIZE);
                 string msg;
                 msg = byteToHexStr(buffer);
                 channels = Transform.toChannels(msg);
-                
+
                 result = Transform.toDec(channels[0]);
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
-            listview.Dispatcher.BeginInvoke(new Action(() => {
+            listview.Dispatcher.BeginInvoke(new Action(() =>
+            {
                 channelInfoList.Add(new ChannelInfo(channels));
             }));
-            
-            textOut.Dispatcher.BeginInvoke(new Action(() => 
+
+            textOut.Dispatcher.BeginInvoke(new Action(() =>
             {
                 textOut.Text = result.ToString();
             }));
@@ -120,6 +120,32 @@ namespace WpfApp1
         private void MenuClb1_Click(object sender, RoutedEventArgs e)
         {
             string msg = "通道1";
+            CalibrateWindow c = new CalibrateWindow(msg);
+            c.ShowDialog();
+        }
+
+        private void MenuClb_Click(object sender, RoutedEventArgs e)
+        {
+            //todo:连接串口后取消该注释
+            //if (!myPort.IsOpen)
+            //{
+            //    MessageBoxButton button = MessageBoxButton.OK;
+            //    MessageBoxImage image = MessageBoxImage.Error;
+            //    MessageBox.Show("串口未打开!", "错误！", button, image);
+            //    return;
+            //}
+        }
+
+        private void MenuClb2_Click(object sender, RoutedEventArgs e)
+        {
+            string msg = "通道2";
+            CalibrateWindow c = new CalibrateWindow(msg);
+            c.ShowDialog();
+        }
+
+        private void MenuClb3_Click(object sender, RoutedEventArgs e)
+        {
+            string msg = "通道3";
             CalibrateWindow c = new CalibrateWindow(msg);
             c.ShowDialog();
         }

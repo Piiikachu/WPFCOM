@@ -33,7 +33,7 @@
                 <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P60Mpa}}" VerticalContentAlignment="Center" Height="20" Content="60Mpa"/>
                 <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P80Mpa}}" VerticalContentAlignment="Center" Height="20" Content="80Mpa"/>
                 <RadioButton IsChecked="{Binding Path=BdPoint,Converter={StaticResource EnumToBooleanConverter},ConverterParameter={x:Static local:BDPoint.P100Mpa}}" VerticalContentAlignment="Center" Height="20" Content="100Mpa"/>
-                <TextBox Text="{Binding BdPoint}"/>
+                <TextBlock Text="当前电流读数："/>
             </StackPanel>
             <GridSplitter  Width="1"></GridSplitter>
             <StackPanel DockPanel.Dock="Left" Orientation="Vertical" >
@@ -44,6 +44,7 @@
                         <ColumnDefinition Width="95"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="20"/>
@@ -63,7 +64,7 @@
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="13.6mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="4" Text="16.8mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="5" Text="20mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text=""/>
                 </Grid>
             </StackPanel>
             
