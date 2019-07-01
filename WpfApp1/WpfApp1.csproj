@@ -60,6 +60,7 @@
     <Compile Include="CalibrateWindow.xaml.cs">
       <DependentUpon>CalibrateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Channel.cs" />
     <Compile Include="ChannelInfo.cs" />
     <Compile Include="StatusModel.cs" />
     <Compile Include="Transform.cs" />

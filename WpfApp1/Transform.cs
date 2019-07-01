@@ -8,24 +8,39 @@ namespace WpfApp1
 {
     public class Transform
     {
+        private Channel[] channels;
 
-
-        public static double toPressure(double current)
+        public Transform(Channel[] channels)
         {
-            if (current > 20)
+            this.channels = channels;
+        }
+
+        public static double toPressure(double[] bdpoints, double current)
+        {
+            if (bdpoints.Length != 6)
+            {
+                throw new Exception("caliberate points array lenth error");
+            }
+            if (current > bdpoints[5])
             {
                 throw new Exception("Input current out of range");
             }
-            if (current < 4)
+            if (current <= bdpoints[0])
             {
                 return 0;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                return 100 * (current - 4) / 16;
+                if (current > bdpoints[i] && current <= bdpoints[i + 1])
+                {
+                    return 20 / (bdpoints[i + 1] - bdpoints[i]) * (current - bdpoints[i]) + 20 * i;
+                }
             }
+
+            throw new Exception("Input current not in range");
+
         }
-        public static double[] toPressures(string[] hexnums)
+        public double[] toPressures(string[] hexnums)
         {
             if (hexnums.Length != 8)
             {
@@ -34,7 +49,7 @@ namespace WpfApp1
             double[] ps = new double[8];
             for (int i = 0; i < 8; i++)
             {
-                ps[i] = toPressure(Convert.ToDouble(toDec(hexnums[i])) / 100);
+                ps[i] = toPressure(channels[i].bdpoints, Convert.ToDouble(toDec(hexnums[i])) / 100);
             }
             return ps;
         }

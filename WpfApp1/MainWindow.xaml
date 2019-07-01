@@ -126,39 +126,6 @@
 
             </GroupBox>
             
-            <!--<Grid Background="White">
-                <d3:Chart Name="plotter" >
-                    <d3:Chart.Title>
-                        <TextBlock HorizontalAlignment="Center" FontSize="18" Margin="0,5,0,5">Line graph legend sample</TextBlock>
-                    </d3:Chart.Title>
-                    <d3:Chart.LegendContent>
-                        <d3:LegendItemsPanel Margin="0,5,0,5">
-                            <d3:LegendItemsPanel.Resources>
-                                <DataTemplate x:Key="InteractiveDataDisplay.WPF.LineGraph">
-                                    <StackPanel Orientation="Horizontal">
-                                        --><!--<CheckBox IsChecked="{Binding Path=Visibility, Converter={StaticResource VisibilityToCheckedConverter}, Mode=TwoWay}"/>--><!--
-                                        <Line Width="10" Height="10" X1="0" Y1="0" X2="10" Y2="10" Stroke="{Binding Path=Stroke}" StrokeThickness="2"/>
-                                        <TextBlock Margin="5,0,0,0" Text="{Binding Path=Description}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </d3:LegendItemsPanel.Resources>
-                        </d3:LegendItemsPanel>
-                    </d3:Chart.LegendContent>
-                    <Grid Name="lines"/>
-                </d3:Chart>
-            </Grid>-->
-           
-            <!--<DataGrid x:Name="resultGrid" ItemsSource="{Binding}">
-                
-                <DataGrid.Columns>
-
-                    <DataGridTextColumn Header="通道1" Width="80" Binding="{Binding chan}"/>
-                    <DataGridTextColumn Header="通道2" Width="80" Binding="{Binding Points[0]}"/>
-                    <DataGridTextColumn Header="通道3" Width="80" Binding="{Binding Points[0]}"/>
-                    <DataGridTextColumn Header="通道4" Width="80" Binding="{Binding Points[0]}"/>
-
-                </DataGrid.Columns>
-            </DataGrid>-->
             <ListView x:Name="listview">
                 <ListView.View>
                     <GridView>

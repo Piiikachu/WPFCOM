@@ -34,6 +34,12 @@ namespace WpfApp1
             this.unit3.SelectedIndex = 0;
 
             listview.ItemsSource = channelInfoList;
+
+            for (int i = 0; i < 8; i++)
+            {
+                channels[i] = new Channel();
+            }
+            transform = new Transform(channels);
         }
 
         static int BUFFER_SIZE = 25;
@@ -43,8 +49,9 @@ namespace WpfApp1
         double result;
         bool portClosing;
         string pressure;
-        string[] channels;
-
+        string[] inputChannels;
+        public Channel[] channels = new Channel[8];
+        public Transform transform;
         ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
 
         private void MyPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -59,9 +66,9 @@ namespace WpfApp1
                 myPort.Read(buffer, 0, BUFFER_SIZE);
                 string msg;
                 msg = byteToHexStr(buffer);
-                channels = Transform.toChannels(msg);
+                inputChannels = Transform.toChannels(msg);
 
-                result = Transform.toDec(channels[0]);
+                result = Transform.toDec(inputChannels[0]);
             }
             catch (Exception err)
             {
@@ -69,7 +76,7 @@ namespace WpfApp1
             }
             listview.Dispatcher.BeginInvoke(new Action(() =>
             {
-                channelInfoList.Add(new ChannelInfo(channels));
+                channelInfoList.Add(new ChannelInfo(inputChannels));
             }));
 
             textOut.Dispatcher.BeginInvoke(new Action(() =>
@@ -119,8 +126,9 @@ namespace WpfApp1
 
         private void MenuClb1_Click(object sender, RoutedEventArgs e)
         {
-            string msg = "通道1";
-            CalibrateWindow c = new CalibrateWindow(msg);
+            int channel = 1;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.Owner = this;
             c.ShowDialog();
         }
 
@@ -138,15 +146,17 @@ namespace WpfApp1
 
         private void MenuClb2_Click(object sender, RoutedEventArgs e)
         {
-            string msg = "通道2";
-            CalibrateWindow c = new CalibrateWindow(msg);
+            int channel = 2;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.Owner = this;
             c.ShowDialog();
         }
 
         private void MenuClb3_Click(object sender, RoutedEventArgs e)
         {
-            string msg = "通道3";
-            CalibrateWindow c = new CalibrateWindow(msg);
+            int channel = 3;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.Owner = this;
             c.ShowDialog();
         }
     }

@@ -20,13 +20,18 @@ namespace WpfApp1
     /// </summary>
     public partial class CalibrateWindow : Window
     {
+        MainWindow mainWindow;
         CalibrateModel model;
-        public CalibrateWindow(string channel)
+        int channel;
+        public CalibrateWindow(int channel)
         {
             InitializeComponent();
-            this.Title = $"{channel}标定窗口";
+            this.channel = channel-1;
+            this.Title = $"通道{channel}标定窗口";
             model = new CalibrateModel();
             DataContext = model;
+
+            mainWindow =(MainWindow) App.Current.MainWindow;
         }
 
         private string bdPointToString(BDPoint p)
@@ -67,32 +72,33 @@ namespace WpfApp1
             switch (p)
             {
                 case BDPoint.P0Mpa:
-                    this.bdText0.Text = $"{current}mA";
+                    //this.bdText0.Text = $"{current}mA";
                     model.CurrentCalibratePoints[0] = current;
                     break;
                 case BDPoint.P20Mpa:
-                    this.bdText2.Text = $"{current}mA";
+                    //this.bdText2.Text = $"{current}mA";
                     model.CurrentCalibratePoints[1] = current;
                     break;
                 case BDPoint.P40Mpa:
-                    this.bdText4.Text = $"{current}mA";
+                    //this.bdText4.Text = $"{current}mA";
                     model.CurrentCalibratePoints[2] = current;
                     break;
                 case BDPoint.P60Mpa:
-                    this.bdText6.Text = $"{current}mA";
+                    //this.bdText6.Text = $"{current}mA";
                     model.CurrentCalibratePoints[3] = current;
                     break;
                 case BDPoint.P80Mpa:
-                    this.bdText8.Text = $"{current}mA";
+                    //this.bdText8.Text = $"{current}mA";
                     model.CurrentCalibratePoints[4] = current;
                     break;
                 case BDPoint.P100Mpa:
-                    this.bdText10.Text = $"{current}mA";
+                    //this.bdText10.Text = $"{current}mA";
                     model.CurrentCalibratePoints[5] = current;
                     break;
                 default:
                     break;
             }
+            mainWindow.channels[channel].setChannel(model.CurrentCalibratePoints);
         }
     }
 

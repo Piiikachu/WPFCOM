@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfApp1
 {
+    
     public class ChannelInfo : INotifyPropertyChanged
     {
         private string[] _channels;
@@ -21,8 +23,9 @@ namespace WpfApp1
         private double _p8;
         public ChannelInfo(string[] channels)
         {
-            this.Channels = channels;
-            this.Pressures = Transform.toPressures(channels);
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            
+            this.Pressures = main.transform.toPressures(channels);
             this.P1 = Pressures[0];
             this.P2 = Pressures[1];
             this.P3 = Pressures[2];
@@ -31,6 +34,7 @@ namespace WpfApp1
             this.P6 = Pressures[5];
             this.P7 = Pressures[6];
             this.P8 = Pressures[7];
+            
         }
 
         public string[] Channels { get => _channels; set => _channels = value; }

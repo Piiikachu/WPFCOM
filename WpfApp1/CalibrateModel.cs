@@ -12,7 +12,7 @@ namespace WpfApp1
     class CalibrateModel:INotifyPropertyChanged
     {
 
-        private static readonly double[] DEFAULT_CALIBRATE = new double[6]
+        public static readonly double[] DEFAULT_CALIBRATE = new double[6]
         {
            4, 7.2, 10.4, 13.6, 16.8, 20
         };
@@ -66,7 +66,15 @@ namespace WpfApp1
             }
         }
 
-        public double[] CurrentCalibratePoints { get => currentCalibratePoints; set => currentCalibratePoints = value; }
+        public double[] CurrentCalibratePoints
+        {
+            get => currentCalibratePoints;
+            set
+            {
+                currentCalibratePoints = value;
+                OnPropertyChanged("CurrentCalibratePoints");
+            }
+        }
 
         private double inputCurrent;
     }
@@ -92,4 +100,5 @@ namespace WpfApp1
             return value != null && value.Equals(true) ? parameter : Binding.DoNothing;
         }
     }
+    
 }

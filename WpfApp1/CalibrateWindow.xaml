@@ -52,19 +52,19 @@
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="bdText0" Grid.Column="0" Grid.Row="0" Text="4mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    <TextBlock x:Name="bdText2" Grid.Column="0" Grid.Row="1" Text="7.2mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    <TextBlock x:Name="bdText4" Grid.Column="0" Grid.Row="2" Text="10.4mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    <TextBlock x:Name="bdText6" Grid.Column="0" Grid.Row="3" Text="13.6mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    <TextBlock x:Name="bdText8" Grid.Column="0" Grid.Row="4" Text="16.8mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    <TextBlock x:Name="bdText10" Grid.Column="0" Grid.Row="5" Text="20mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
+                    <TextBlock x:Name="bdText0" Grid.Column="0" Grid.Row="0" Text="{Binding CurrentCalibratePoints[0]}" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
+                    <TextBlock x:Name="bdText2" Grid.Column="0" Grid.Row="1" Text="{Binding CurrentCalibratePoints[1]}" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
+                    <TextBlock x:Name="bdText4" Grid.Column="0" Grid.Row="2" Text="{Binding CurrentCalibratePoints[2]}" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
+                    <TextBlock x:Name="bdText6" Grid.Column="0" Grid.Row="3" Text="{Binding CurrentCalibratePoints[3]}" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
+                    <TextBlock x:Name="bdText8" Grid.Column="0" Grid.Row="4" Text="{Binding CurrentCalibratePoints[4]}" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
+                    <TextBlock x:Name="bdText10" Grid.Column="0" Grid.Row="5" Text="{Binding CurrentCalibratePoints[5]}" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="0" Text="4mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="7.2mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="2" Text="10.4mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="13.6mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="4" Text="16.8mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="5" Text="20mA" HorizontalAlignment="Right" Margin="0,0,30,0"></TextBlock>
-                    <TextBlock Grid.Column="0" Grid.Row="6" Text=""/>
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text="{Binding InputCurrent}" HorizontalAlignment="Center"/>
                 </Grid>
             </StackPanel>
             
