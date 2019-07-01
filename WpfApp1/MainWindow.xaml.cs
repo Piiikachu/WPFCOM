@@ -50,12 +50,14 @@ namespace WpfApp1
         bool portClosing;
         string pressure;
         string[] inputChannels;
+        public int channelIndex=-1;
         public ObservableCollection<Channel> channels = new ObservableCollection<Channel>();
         public Transform transform;
         ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
 
         private void MyPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            
             if (portClosing)
             {
                 return;
@@ -74,6 +76,13 @@ namespace WpfApp1
             {
                 MessageBox.Show(err.Message);
             }
+            if (channelIndex != -1)
+            {
+                channels[channelIndex].setCurrent(result);
+                return;
+            }
+
+
             listview.Dispatcher.BeginInvoke(new Action(() =>
             {
                 channelInfoList.Add(new ChannelInfo(inputChannels));
@@ -147,7 +156,6 @@ namespace WpfApp1
         {
             int channel = 2;
             CalibrateWindow c = new CalibrateWindow(channel);
-            c.Owner = this;
             c.ShowDialog();
         }
 
@@ -155,7 +163,6 @@ namespace WpfApp1
         {
             int channel = 3;
             CalibrateWindow c = new CalibrateWindow(channel);
-            c.Owner = this;
             c.ShowDialog();
         }
     }

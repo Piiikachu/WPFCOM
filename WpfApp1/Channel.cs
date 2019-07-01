@@ -21,6 +21,18 @@ namespace WpfApp1
             }
         }
 
+        public double InputCurrent
+        {
+            get => inputCurrent;
+            set
+            {
+                this.inputCurrent = value;
+                NotifyPropertyChanged("InputCurrent");
+            }
+        }
+
+        private double inputCurrent;
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String info)
         {
@@ -44,6 +56,11 @@ namespace WpfApp1
         public void setChannel(double[] Points)
         {
             Array.Copy(Points, ChannelBDPoints, 6);
+        }
+
+        public void setCurrent(double result)
+        {
+            this.InputCurrent = result/100;
         }
     }
 }

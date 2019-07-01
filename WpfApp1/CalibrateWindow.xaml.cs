@@ -27,17 +27,18 @@ namespace WpfApp1
 
         public int ChannelIndex { get => channelIndex; set => channelIndex = value; }
 
-        public CalibrateWindow(int channelIndex)
+        public CalibrateWindow(int index)
         {
             InitializeComponent();
-            this.ChannelIndex = channelIndex-1;
-            this.Title = $"通道{channelIndex}标定窗口";
+            this.ChannelIndex = index-1;
+            this.Title = $"通道{index}标定窗口";
             model = new CalibrateModel();
-            model.setChannel(channelIndex - 1);
+            model.setChannel(index - 1);
             DataContext = model;
 
             mainWindow =(MainWindow) App.Current.MainWindow;
-            channel = mainWindow.channels[channelIndex - 1];
+            channel = mainWindow.channels[index - 1];
+            mainWindow.channelIndex = index - 1;
         }
 
         private string bdPointToString(BDPoint p)
@@ -110,6 +111,11 @@ namespace WpfApp1
         {
             channel.setChannel(model.getPoints());
             this.Close();
+        }
+
+        private void WindowBD_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mainWindow.channelIndex = -1;
         }
     }
 

@@ -41,7 +41,16 @@ namespace WpfApp1
             this.ChannelIndex = index;
             MainWindow main = (MainWindow)App.Current.MainWindow;
             this.channel = main.channels[ChannelIndex];
+            channel.PropertyChanged += updateCurrent;
             updatePoint();
+        }
+
+        private void updateCurrent(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName=="InputCurrent")
+            {
+                this.InputCurrent = channel.InputCurrent;
+            }
         }
 
         private void updatePoint()

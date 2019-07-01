@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         
-        Title="CalibrateWindow" Height="220" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+        Title="CalibrateWindow" Height="220" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" Closing="WindowBD_Closing">
     <Window.DataContext>
         <local:CalibrateModel/>
     </Window.DataContext>
