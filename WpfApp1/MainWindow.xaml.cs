@@ -45,7 +45,7 @@ namespace WpfApp1
         static int BUFFER_SIZE = 25;
         byte[] buffer = new Byte[BUFFER_SIZE];
 
-        public static SerialPort myPort = new SerialPort();
+        private SerialPort myPort=new SerialPort();
         double result;
         bool portClosing;
         string pressure;
@@ -109,6 +109,29 @@ namespace WpfApp1
 
         private void Btn_open_Click(object sender, RoutedEventArgs e)
         {
+            if (myPort.IsOpen)
+            {
+                MessageBoxResult result = MessageBox.Show("确认关闭串口？", "确认关闭", MessageBoxButton.OKCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.None:
+                        break;
+                    case MessageBoxResult.OK:
+                        myPort.Close();
+                        break;
+                    case MessageBoxResult.Cancel:
+                        break;
+                    case MessageBoxResult.Yes:
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    default:
+                        break;
+                }
+                myPort = new SerialPort();
+                btn_open.Content = "打开串口";
+                return;
+            }
             try
             {
                 myPort.BaudRate = 9600;
@@ -119,6 +142,7 @@ namespace WpfApp1
                 myPort.Open();
                 portClosing = false;
                 MessageBox.Show("串口打开成功");
+                btn_open.Content = "关闭串口";
             }
             catch (Exception err)
             {
@@ -130,7 +154,7 @@ namespace WpfApp1
 
         private void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
+            channelInfoList.Clear();
         }
 
 
