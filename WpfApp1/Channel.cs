@@ -3,27 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace WpfApp1
 {
-    public class Channel
+    public class Channel:INotifyPropertyChanged
     {
-        public double[] bdpoints;
+        private double[] channelBDPoints;
+
+        public double[] ChannelBDPoints
+        {
+            get => channelBDPoints;
+            set
+            {
+                this.channelBDPoints = value;
+                NotifyPropertyChanged("ChannelBDPoints");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String info)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
 
         public Channel()
         {
-            bdpoints = new double[6];
-            Array.Copy(CalibrateModel.DEFAULT_CALIBRATE, bdpoints, 6);
+            ChannelBDPoints = new double[6];
+            Array.Copy(CalibrateModel.DEFAULT_CALIBRATE, ChannelBDPoints, 6);
         }
 
         public double toPressure(double current)
         {
-            return Transform.toPressure(bdpoints, current);
+            return Transform.toPressure(ChannelBDPoints, current);
         }
 
         public void setChannel(double[] Points)
         {
-            Array.Copy(Points, bdpoints, 6);
+            Array.Copy(Points, ChannelBDPoints, 6);
         }
     }
 }

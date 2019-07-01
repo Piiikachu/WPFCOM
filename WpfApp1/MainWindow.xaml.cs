@@ -37,9 +37,9 @@ namespace WpfApp1
 
             for (int i = 0; i < 8; i++)
             {
-                channels[i] = new Channel();
+                channels.Add(new Channel());
             }
-            transform = new Transform(channels);
+            transform = new Transform(channels.ToArray());
         }
 
         static int BUFFER_SIZE = 25;
@@ -50,7 +50,7 @@ namespace WpfApp1
         bool portClosing;
         string pressure;
         string[] inputChannels;
-        public Channel[] channels = new Channel[8];
+        public ObservableCollection<Channel> channels = new ObservableCollection<Channel>();
         public Transform transform;
         ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
 
@@ -128,7 +128,6 @@ namespace WpfApp1
         {
             int channel = 1;
             CalibrateWindow c = new CalibrateWindow(channel);
-            c.Owner = this;
             c.ShowDialog();
         }
 

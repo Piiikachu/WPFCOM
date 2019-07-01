@@ -49,7 +49,7 @@ namespace WpfApp1
             double[] ps = new double[8];
             for (int i = 0; i < 8; i++)
             {
-                ps[i] = toPressure(channels[i].bdpoints, Convert.ToDouble(toDec(hexnums[i])) / 100);
+                ps[i] = toPressure(channels[i].ChannelBDPoints, Convert.ToDouble(toDec(hexnums[i])) / 100);
             }
             return ps;
         }
