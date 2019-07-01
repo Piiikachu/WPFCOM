@@ -32,8 +32,6 @@ namespace WpfApp1
         public CalibrateModel()
         {
             ChannelIndex = 0;
-            //todo: 实现实时读取电流值
-            this.InputCurrent = 0.86;
         }
 
         public void setChannel(int index)
@@ -42,6 +40,7 @@ namespace WpfApp1
             MainWindow main = (MainWindow)App.Current.MainWindow;
             this.channel = main.channels[ChannelIndex];
             channel.PropertyChanged += updateCurrent;
+            this.InputCurrent = channel.InputCurrent;
             updatePoint();
         }
 

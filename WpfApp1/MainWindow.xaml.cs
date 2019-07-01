@@ -50,14 +50,14 @@ namespace WpfApp1
         bool portClosing;
         string pressure;
         string[] inputChannels;
-        public int channelIndex=-1;
+        public int channelIndex = -1;
         public ObservableCollection<Channel> channels = new ObservableCollection<Channel>();
         public Transform transform;
         ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
 
         private void MyPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            
+
             if (portClosing)
             {
                 return;
@@ -133,23 +133,24 @@ namespace WpfApp1
             ObservableCollection<ChannelInfo> channelInfoList = new ObservableCollection<ChannelInfo>();
         }
 
+
+
+        private void MenuClb_Click(object sender, RoutedEventArgs e)
+        {
+            //todo: 连接串口后取消该注释
+            if (!myPort.IsOpen)
+            {
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage image = MessageBoxImage.Error;
+                MessageBox.Show("串口未打开!", "错误！", button, image);
+                return;
+            }
+        }
         private void MenuClb1_Click(object sender, RoutedEventArgs e)
         {
             int channel = 1;
             CalibrateWindow c = new CalibrateWindow(channel);
             c.ShowDialog();
-        }
-
-        private void MenuClb_Click(object sender, RoutedEventArgs e)
-        {
-            //todo:连接串口后取消该注释
-            //if (!myPort.IsOpen)
-            //{
-            //    MessageBoxButton button = MessageBoxButton.OK;
-            //    MessageBoxImage image = MessageBoxImage.Error;
-            //    MessageBox.Show("串口未打开!", "错误！", button, image);
-            //    return;
-            //}
         }
 
         private void MenuClb2_Click(object sender, RoutedEventArgs e)
@@ -162,6 +163,37 @@ namespace WpfApp1
         private void MenuClb3_Click(object sender, RoutedEventArgs e)
         {
             int channel = 3;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.ShowDialog();
+        }
+
+        private void MenuClb4_Click(object sender, RoutedEventArgs e)
+        {
+            int channel = 4;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.ShowDialog();
+        }
+        private void MenuClb5_Click(object sender, RoutedEventArgs e)
+        {
+            int channel = 5;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.ShowDialog();
+        }
+        private void MenuClb6_Click(object sender, RoutedEventArgs e)
+        {
+            int channel = 6;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.ShowDialog();
+        }
+        private void MenuClb7_Click(object sender, RoutedEventArgs e)
+        {
+            int channel = 7;
+            CalibrateWindow c = new CalibrateWindow(channel);
+            c.ShowDialog();
+        }
+        private void MenuClb8_Click(object sender, RoutedEventArgs e)
+        {
+            int channel = 8;
             CalibrateWindow c = new CalibrateWindow(channel);
             c.ShowDialog();
         }
