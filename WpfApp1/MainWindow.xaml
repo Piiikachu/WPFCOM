@@ -125,6 +125,7 @@
                 <StackPanel Orientation="Vertical">
                     <Button x:Name="btn_open" Content="打开串口" Click="Btn_open_Click" ></Button>
                     <Button x:Name="btn_clear" Content="清空数据" Click="Btn_clear_Click"></Button>
+                    <Button Content="绘图" Click="Btn_plot_Click"/>
                     <TextBlock x:Name="textOut" Text="0MPa"></TextBlock>
                     
                 </StackPanel>

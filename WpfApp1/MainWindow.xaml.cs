@@ -221,5 +221,10 @@ namespace WpfApp1
             CalibrateWindow c = new CalibrateWindow(channel);
             c.ShowDialog();
         }
+
+        private void Btn_plot_Click(object sender, RoutedEventArgs e)
+        {
+            new PlotWindow(channelInfoList).ShowDialog();
+        }
     }
 }
